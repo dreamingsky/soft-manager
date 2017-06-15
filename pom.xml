@@ -27,7 +27,7 @@
       <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-tomcat</artifactId>
-          <scope>provided</scope>
+          <!--<scope>provided</scope>-->
       </dependency>
       <dependency>
           <groupId>org.apache.tomcat.embed</groupId>
@@ -62,6 +62,34 @@
   <build>
     <finalName>boot</finalName>
      <plugins>
+
+         <plugin>
+             <groupId>org.apache.tomcat.maven</groupId>
+             <artifactId>tomcat7-maven-plugin</artifactId>
+             <version>2.2</version>
+             <configuration>
+                 <url>http://localhost:8881/manager/text</url>
+                 <!-- server、username、password对应maven的setting下的配置 -->
+                 <server>tomcat</server>
+                 <username>tomcat</username>
+                 <password>tomcat</password>
+                 <!-- <path>/${target.context}</path> -->
+                 <path>/</path>
+                 <port>8090</port>
+                 <!-- war文件路径缺省情况下指向target -->
+                 <!--<warFile>${basedir}/target/${project.build.finalName}.war</warFile> -->
+             </configuration>
+             <executions>
+                 <execution>
+                     <id>tomcat-deploy</id>
+                     <phase>deploy</phase>
+                     <goals>
+                         <goal>deploy</goal>
+                     </goals>
+                 </execution>
+             </executions>
+         </plugin>
+
          <plugin>
              <groupId>org.apache.maven.plugins</groupId>
              <artifactId>maven-compiler-plugin</artifactId>
