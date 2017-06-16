@@ -101,6 +101,7 @@ public class DbConfig {
         factoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
         factoryBean.setPackagesToScan("com.creditease.application.entity");
         factoryBean.setJpaProperties(hibernateProperties);
+        factoryBean.setPersistenceUnitName("myPersistenceUnit");
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         factoryBean.afterPropertiesSet();
         return factoryBean;
