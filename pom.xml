@@ -23,12 +23,18 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-web</artifactId>
           <version>1.4.3.RELEASE</version>
+          <exclusions>
+              <exclusion>
+                  <groupId>org.springframework.boot</groupId>
+                  <artifactId>spring-boot-starter-tomcat</artifactId>
+              </exclusion>
+          </exclusions>
       </dependency>
-      <dependency>
+      <!--<dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-tomcat</artifactId>
-          <!--<scope>provided</scope>-->
-      </dependency>
+          &lt;!&ndash;<scope>provided</scope>&ndash;&gt;
+      </dependency>-->
       <dependency>
           <groupId>org.apache.tomcat.embed</groupId>
           <artifactId>tomcat-embed-jasper</artifactId>
@@ -58,6 +64,43 @@
           <artifactId>mysql-connector-java</artifactId>
           <scope>runtime</scope>
       </dependency>
+
+      <!-- Json包 -->
+      <dependency>
+          <groupId>com.alibaba</groupId>
+          <artifactId>fastjson</artifactId>
+          <version>1.2.16</version>
+      </dependency>
+
+      <!-- 为了监控数据库 -->
+      <dependency>
+          <groupId>com.alibaba</groupId>
+          <artifactId>druid</artifactId>
+          <version>1.0.25</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-orm</artifactId>
+          <version>4.3.3.RELEASE</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-core</artifactId>
+          <version>${hibernate.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-entitymanager</artifactId>
+          <version>${hibernate.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework.data</groupId>
+          <artifactId>spring-data-jpa</artifactId>
+          <version>1.10.3.RELEASE</version>
+      </dependency>
+
   </dependencies>
   <build>
     <finalName>boot</finalName>
