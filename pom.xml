@@ -19,7 +19,7 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-      <!--<dependency>
+      <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-web</artifactId>
           <version>1.4.3.RELEASE</version>
@@ -29,21 +29,21 @@
                   <artifactId>spring-boot-starter-tomcat</artifactId>
               </exclusion>
           </exclusions>
-      </dependency>-->
-      <!--<dependency>
+      </dependency>
+      <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-tomcat</artifactId>
-          &lt;!&ndash;<scope>provided</scope>&ndash;&gt;
-      </dependency>-->
+          <scope>provided</scope>
+      </dependency>
       <!--<dependency>
           <groupId>org.apache.tomcat.embed</groupId>
           <artifactId>tomcat-embed-jasper</artifactId>
           <scope>provided</scope>
       </dependency>-->
-      <!--<dependency>
+      <dependency>
           <groupId>javax.servlet</groupId>
           <artifactId>jstl</artifactId>
-      </dependency>-->
+      </dependency>
       <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-test</artifactId>
@@ -105,6 +105,19 @@
           <artifactId>spring-boot-starter-thymeleaf</artifactId>
       </dependency>
 
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+          <version>3.1.0</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-devtools</artifactId>
+          <optional>true</optional>
+      </dependency>
+
   </dependencies>
   <build>
     <finalName>boot</finalName>
@@ -152,6 +165,18 @@
                  <useSystemClassLoader>false</useSystemClassLoader>
              </configuration>
          </plugin>
+
+         <plugin>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-maven-plugin</artifactId>
+             <version>1.5.4.RELEASE</version>
+             <configuration>
+
+                 <fork>true</fork>
+             </configuration>
+
+         </plugin>
+
      </plugins>
   </build>
 </project>

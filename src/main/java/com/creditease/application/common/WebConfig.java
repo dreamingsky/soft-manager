@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.thymeleaf.Template;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
@@ -40,7 +41,7 @@ public class WebConfig {
     @Bean
     public SpringResourceTemplateResolver templateResolver(){
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-        templateResolver.setPrefix("/thymeleaf/");
+        templateResolver.setPrefix("/leaf/");
         templateResolver.setSuffix(".html");
         templateResolver.setCacheable(false);
         templateResolver.setCharacterEncoding("utf-8");
