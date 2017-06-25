@@ -39,7 +39,7 @@ public class UserController {
 
     @RequestMapping("/to/list")
     public String touser(HttpServletRequest request){
-        return "user/userList";
+        return "user/list";
     }
 
     @RequestMapping(value = "/list",method = RequestMethod.POST)
@@ -51,6 +51,12 @@ public class UserController {
         info.setRows(user.getResults());
         info.setTotal(user.getTotalResult());
         return info;
+    }
+
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public String userSave(User user,HttpServletRequest request){
+        userService.saveUserInfo(user);
+        return "redirect:/user/to/list";
     }
 
 }

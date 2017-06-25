@@ -20,6 +20,7 @@ var $grid = $('#' + id).datagrid({
 		url: url,
 		toolbar: '#' + dg_toolbar,
 		columns: cols,
+		fit : true,
 		sortName: defaultOpts['sortName'],
 		sortOrder: defaultOpts['sortOrder'],
 		queryParams: defaultOpts['queryParams'],

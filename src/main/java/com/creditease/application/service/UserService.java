@@ -13,4 +13,6 @@ public interface UserService {
 
 
     Pager findUserListByPage(UserBean bean);
+
+    void saveUserInfo(User user);
 }

@@ -20,6 +20,39 @@ var users = {
 	}
 }
 
+function newUser(){
+           	$("#dlg").dialog({
+           	    open :true,
+           	    center :true,
+           		title: "新建",
+           		width: 400,
+           		height: 300,
+           		closed: false,
+           		modal : true,
+           		buttons : [
+           		{
+           		    text: '保存',
+           		    iconCls:'icon-save',
+                	handler: function() {
+                        $('#fm').attr('action', baseUrl+"/user/add");
+                        $('#fm').submit();
+                	}
+                },
+                {
+                           		    text: '取消',
+                           		    iconCls:'icon-cancel',
+                                	handler: function() {
+                                        $('#dlg').dialog('close');
+                                	}
+                                }
+           		]
+           	});
+        }
+
+function saveUser(){
+
+}
+
 $(document).ready(function() {
 	users.init();
 });
