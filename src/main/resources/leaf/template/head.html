@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header" >
+    <meta name="scheme" th:content="${#httpServletRequest.scheme}"/>
+    <meta name="serverName" th:content="${#httpServletRequest.serverName}"/>
+    <meta name="serverPort" th:content="${#httpServletRequest.serverPort}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/common/easyui/themes/default/easyui.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/common/easyui/themes/icon.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/common/easyui/themes/color.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/common/easyui/demo/demo.css}"/>
+    <script type="text/javascript" th:src="@{/static/common/easyui/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/common/easyui/jquery.easyui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/common.js}"></script>
+    <script type="text/javascript">
+        var baseUrl = $("meta[name='scheme']").attr("content")+ "://" + $("meta[name='serverName']").attr("content") + ":" + $("meta[name='serverPort']").attr("content");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

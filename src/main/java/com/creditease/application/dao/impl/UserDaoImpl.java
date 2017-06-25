@@ -1,14 +1,13 @@
 package com.creditease.application.dao.impl;
 
+import com.creditease.application.query.Pager;
 import com.creditease.application.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.creditease.application.query.UserBean;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -30,5 +29,20 @@ public class UserDaoImpl {
             return resultList.get(0);
         }
         return null;
+    }
+
+    public Pager findUserByPage(UserBean bean) {
+        Pager pager = new Pager();
+        pager.setCurrentPage(bean.getPage());
+        pager.setShowCount(bean.getRows());
+        String hql = "from User where 1=1";
+        Query query = entityManager.createQuery(hql,User.class);
+
+        Query queryCount = entityManager.createQuery("select count(*) "+hql);
+
+        pager.initPage(query,queryCount);
+
+        return pager;
+
     }
 }

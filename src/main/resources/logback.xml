@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" scanPeriod="60 seconds" debug="false">
+	<property name="LOG_HOME" value="/boot/" />
+	<property name="bizNo" value="boot"></property>
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<!-- Logger for Business Code -->
+	<appender name="businessLogAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/${bizNo}/${bizNo}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${LOG_HOME}/${bizNo}/${bizNo}-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			<MaxHistory>365</MaxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [ %thread ] - [ %-5level ] [ %logger{50} : %line ] - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<!-- Spring framework logger -->
+	<logger name="org.springframework" level="info" additivity="false"></logger>
+
+	<logger name="com.creditease.application" level="info" additivity="false">
+		<appender-ref ref="businessLogAppender" />
+	</logger>
+
+	<!-- logger root level-->
+	<root level="info">
+		<appender-ref ref="stdout" />
+		<appender-ref ref="businessLogAppender" />
+	</root>
+
+</configuration> 
