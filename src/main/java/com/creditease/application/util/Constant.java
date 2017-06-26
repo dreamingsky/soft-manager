@@ -1,4 +1,4 @@
-package com.creditease.application.common;
+package com.creditease.application.util;
 
 /**
  * Created by huiyangchen1 on 2017/6/24.
@@ -6,4 +6,6 @@ package com.creditease.application.common;
 public class Constant {
 
     public static final int pageSize = 10;
+    public static final int failCode = 2;
+
 }

@@ -1,6 +1,6 @@
 package com.creditease.application.query;
 
-import com.creditease.application.common.Constant;
+import com.creditease.application.util.Constant;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
