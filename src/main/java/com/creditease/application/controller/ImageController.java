@@ -9,11 +9,15 @@ import com.creditease.application.query.ResultInfo;
 import com.creditease.application.query.UserBean;
 import com.creditease.application.service.ImageService;
 import com.creditease.application.service.UserService;
+import com.creditease.application.util.FileUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping(value = "/image")
 public class ImageController {
+    private static Logger logger = LoggerFactory.getLogger(ImageController.class);
 
     @Autowired
     private ImageService imageService;
@@ -46,7 +51,17 @@ public class ImageController {
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String userSave(Image image, HttpServletRequest request){
-        imageService.saveImage(image);
+        try {
+            MultipartFile file = image.getFile();
+            if(!file.isEmpty()){
+                image.setFileName(file.getOriginalFilename());
+                image.setFileUrl(FileUtil.upload(file.getOriginalFilename(),file.getInputStream()));
+            }
+            imageService.saveImage(image);
+        }catch (Exception e){
+            logger.error("image",e);
+        }
+
         return "redirect:/image/to/list";
     }
 

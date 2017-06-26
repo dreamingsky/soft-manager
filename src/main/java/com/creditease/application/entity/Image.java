@@ -1,5 +1,7 @@
 package com.creditease.application.entity;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 
 /**
@@ -20,6 +22,9 @@ public class Image {
     private String fileUrl;
     @Column(name = "remark")
     private String remark;
+
+    @Transient
+    private MultipartFile file;
 
     public Long getId() {
         return id;
@@ -59,5 +64,13 @@ public class Image {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }

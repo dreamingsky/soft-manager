@@ -53,7 +53,6 @@ public class WebConfig {
     public SpringTemplateEngine templateEngine(){
         SpringTemplateEngine engine = new SpringTemplateEngine();
         engine.setTemplateResolver(templateResolver());
-
         return engine;
     }
 
