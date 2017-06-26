@@ -2,6 +2,7 @@ package com.creditease.application.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -50,5 +51,19 @@ public class FileUtil {
 
         return newFileName;
 
+    }
+
+    public static void delete(String filename){
+        String filepath = FileUtil.class.getResource("/").getPath();
+        try {
+            if(!StringUtils.isEmpty(filename)){
+                File file = new File(filepath+filename);
+                if(file.exists())
+                    file.delete();
+            }
+
+        }catch (Exception e){
+            logger.error("file",e);
+        }
     }
 }

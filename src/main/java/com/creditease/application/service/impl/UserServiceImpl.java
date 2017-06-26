@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService{
         user.setPassword(Md5Util.MD5Encode(password));
         userDao.saveAndFlush(user);
     }
+
+    @Override
+    public void deleteUser(Long id) {
+        userDao.delete(id);
+    }
 }

@@ -1,6 +1,8 @@
 var users = {
 	config: {
 		userList: baseUrl + '/user/list',
+		deleteUrl: baseUrl + '/user/delete/',
+        		userDelete: '<a href="javascript:void(0)" onclick="deleteFun(\'{0}\',\'{1}\',\'module\')">删除</a>'
 	},
 	opts: {
 		'sortName': 'id',
@@ -13,7 +15,12 @@ var users = {
 		}, width: 150 },
         { field: 'phone', title: '手机号', align: 'center', formatter: function(value, row, index) {
 			return value;
-		}, width: 200 }
+		}, width: 200 },
+                                              		{ field: 'action', title: '操作', align: 'center', formatter: function(value, row, index) {
+                                              			var btns = [];
+                                              			btns.push($.formatString(users.config.userDelete,users.config.deleteUrl,row.id));
+                                              			return btns.join(' | ');
+                                              		} }
 	]],
 	init: function() {
 		baseTable('module', users.config.userList, 'toolbar', users.cols, users.opts);

@@ -15,4 +15,6 @@ public interface UserService {
     Pager findUserListByPage(UserBean bean);
 
     void saveUserInfo(User user);
+
+    void deleteUser(Long id);
 }

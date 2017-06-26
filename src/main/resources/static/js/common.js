@@ -47,3 +47,41 @@ var $grid = $('#' + id).datagrid({
 	window.$grid = $grid;
 
 }
+
+/**
+ * 增加formatString功能
+ * 使用方法：$.formatString('字符串{0}字符串{1}字符串','第一个变量','第二个变量');
+ * @returns 格式化后的字符串
+ */
+$.formatString = function(str) {
+	for ( var i = 0; i < arguments.length - 1; i++) {
+		str = str.replace("{" + i + "}", arguments[i + 1]);
+	}
+	return str;
+};
+
+function deleteFun(url,id,module) {
+	$.messager.confirm('请确认', '您确认要删除此记录?', function(r) {
+		if(r) {
+			$.ajax({
+				url: url + id,
+				type: 'POST',
+				dataType: 'json',
+				success: function(data) {
+					if(data.code == '1') {
+    					$('#'+module).datagrid('reload');
+    					$.messager.show({
+                            title: '提示',
+                            msg: '操作成功'
+                        });
+    				} else {
+    					$.messager.show({
+    						title: '提示',
+                            msg: data.desc
+    					});
+    				}
+				}
+			});
+		}
+	});
+}

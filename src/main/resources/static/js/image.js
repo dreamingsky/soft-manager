@@ -1,6 +1,8 @@
 var images = {
 	config: {
 		imageList: baseUrl + '/image/list',
+		deleteUrl: baseUrl + '/image/delete/',
+		imageDelete: '<a href="javascript:void(0)" onclick="deleteFun(\'{0}\',\'{1}\',\'module\')">删除</a>'
 	},
 	opts: {
 		'sortName': 'id',
@@ -16,7 +18,12 @@ var images = {
 		}, width: 200 },
 		{ field: 'fileUrl', title: '文件路径', align: 'center', formatter: function(value, row, index) {
         	return value;
-        }, width: 200 }
+        }, width: 200 },
+                       		{ field: 'action', title: '操作', align: 'center', formatter: function(value, row, index) {
+                       			var btns = [];
+                       			btns.push($.formatString(images.config.imageDelete,images.config.deleteUrl,row.id));
+                       			return btns.join(' | ');
+                       		} }
 	]],
 	init: function() {
 		baseTable('module', images.config.imageList, 'toolbar', images.cols, images.opts);
@@ -52,9 +59,6 @@ function newImage(){
            	});
         }
 
-function saveUser(){
-
-}
 
 $(document).ready(function() {
 	images.init();

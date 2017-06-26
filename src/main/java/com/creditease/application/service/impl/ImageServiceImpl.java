@@ -11,6 +11,7 @@ import com.creditease.application.query.Pager;
 import com.creditease.application.query.UserBean;
 import com.creditease.application.service.ImageService;
 import com.creditease.application.service.UserService;
+import com.creditease.application.util.FileUtil;
 import com.creditease.application.util.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,18 @@ public class ImageServiceImpl implements ImageService{
     @Override
     public void saveImage(Image image) {
        imageDao.saveAndFlush(image);
+    }
+
+    @Override
+    public Image findImageById(Long id) {
+
+        Image one = imageDao.findOne(id);
+        return one;
+    }
+
+    @Override
+    public void deleteImage(Image image) {
+        imageDao.delete(image.getId());
+        FileUtil.delete(image.getFileName());
     }
 }

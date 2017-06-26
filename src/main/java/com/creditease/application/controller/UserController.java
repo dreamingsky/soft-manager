@@ -8,10 +8,7 @@ import com.creditease.application.query.UserBean;
 import com.creditease.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -57,6 +54,14 @@ public class UserController {
     public String userSave(User user,HttpServletRequest request){
         userService.saveUserInfo(user);
         return "redirect:/user/to/list";
+    }
+
+    @RequestMapping(value = "/delete/{id}",method = RequestMethod.POST)
+    @ResponseBody
+    public ResultInfo userDelete(@PathVariable("id") Long id, HttpServletRequest request){
+        ResultInfo info = new ResultInfo();
+        userService.deleteUser(id);
+        return info;
     }
 
 }

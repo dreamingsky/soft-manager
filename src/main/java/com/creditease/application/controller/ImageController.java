@@ -14,9 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -63,6 +61,24 @@ public class ImageController {
         }
 
         return "redirect:/image/to/list";
+    }
+
+    @RequestMapping(value = "/delete/{id}",method = RequestMethod.POST)
+    @ResponseBody
+    public ResultInfo userDelete(@PathVariable("id") Long id, HttpServletRequest request){
+        ResultInfo info = new ResultInfo();
+        try {
+            Image image = imageService.findImageById(id);
+            if(image!=null){
+                imageService.deleteImage(image);
+            }
+
+        }catch (Exception e){
+
+            logger.error("image",e);
+        }
+
+        return info;
     }
 
 }
