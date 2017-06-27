@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+<head th:include="template/head :: header">
+</head>
+<script type="text/javascript" th:src="@{/static/js/index.js}"></script>
+
+<body>
+<div class="easyui-layout" style="width:100%;height:600px">
+    <div data-options="region:'west',split:true" title="导航菜单" style="width:200px;">
+
+        <div id="aa" class="easyui-accordion" style="position: absolute; top: 27px; left: 0px; right: 0px; bottom: 0px;">
+
+            <div title="用户管理" iconcls="icon-save" selected="true" style="overflow: auto; padding: 10px;">
+                <ul class="easyui-tree">
+                    <li>
+                        <span><a onclick="addTab('用户列表','/user/to/list')">用户列表</a></span>
+                    </li>
+                </ul>
+            </div>
+            <div title="图片管理" iconcls="icon-reload"  style="padding: 10px;">
+                <ul class="easyui-tree">
+                    <li>
+                        <span><a onclick="addTab('图片列表','/image/to/list')">图片列表</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div data-options="region:'center',iconCls:'icon-ok'">
+        <div id="tt" class="easyui-tabs" fit="true" border="false">
+
+            <div title="欢迎使用" style="padding: 20px; overflow: hidden;" id="home">
+
+                <h1>Welcome to jQuery UI!</h1>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>
