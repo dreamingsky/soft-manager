@@ -6,7 +6,9 @@
     		$('#tt').tabs('add',{
     			title:title,
     			content:content,
-    			closable:true
+    			closable:true,
+    			width: $('#mainPanle').width() - 10,
+                height: $('#mainPanle').height() - 26
     		});
     	}
     }

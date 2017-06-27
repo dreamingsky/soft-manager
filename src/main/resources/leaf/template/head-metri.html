@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header" >
+    <meta name="scheme" th:content="${#httpServletRequest.scheme}"/>
+    <meta name="serverName" th:content="${#httpServletRequest.serverName}"/>
+    <meta name="serverPort" th:content="${#httpServletRequest.serverPort}"/>
+    <link th:href="@{/static/common/assets/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/static/common/assets/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/static/common/assets/plugins/uniform/css/uniform.default.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/static/common/assets/plugins/select2/select2_metro.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/static/common/assets/css/style-metronic.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/static/common/assets/css/style.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/static/common/assets/css/style-responsive.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/static/common/assets/css/plugins.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/static/common/assets/css/themes/default.css}" rel="stylesheet" type="text/css" id="style_color"/>
+    <link th:href="@{/static/common/assets/css/pages/login-soft.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/static/common/assets/css/custom.css}" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" th:href="@{/static/common/assets/app/img/favicon.ico}"/>
+
+    <script th:src="@{/static/common/assets/plugins/jquery-1.10.2.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/plugins/jquery-migrate-1.2.1.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/plugins/jquery.blockui.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/plugins/jquery.cokie.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/plugins/uniform/jquery.uniform.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/plugins/jquery-validation/dist/jquery.validate.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/plugins/backstretch/jquery.backstretch.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/plugins/select2/select2.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/scripts/app.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/scripts/login-soft.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/app/lib/security/sha256.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/common/assets/app/js/index.js}" type="text/javascript" ></script>
+    <script type="text/javascript" th:src="@{/static/js/common.js}"></script>
+    <script type="text/javascript">
+        var baseUrl = $("meta[name='scheme']").attr("content")+ "://" + $("meta[name='serverName']").attr("content") + ":" + $("meta[name='serverPort']").attr("content");
+    </script>
+</head>
+<body>
+
+</body>
+</html>
