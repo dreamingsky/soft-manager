@@ -1,14 +1,10 @@
 package com.creditease.application.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.creditease.application.entity.Image;
-import com.creditease.application.entity.User;
-import com.creditease.application.query.ImageBean;
-import com.creditease.application.query.Pager;
-import com.creditease.application.query.ResultInfo;
-import com.creditease.application.query.UserBean;
+import com.creditease.application.request.ImageBean;
+import com.creditease.application.request.Pager;
+import com.creditease.application.request.ResultInfo;
 import com.creditease.application.service.ImageService;
-import com.creditease.application.service.UserService;
 import com.creditease.application.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,9 +1,4 @@
-package com.creditease.application.query;
-
-
-import org.springframework.util.StringUtils;
-
-import javax.servlet.http.HttpServletRequest;
+package com.creditease.application.request;
 
 
 public class QueryPageBean {

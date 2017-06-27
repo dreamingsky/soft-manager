@@ -1,8 +1,10 @@
 package com.creditease.application.controller;
 
-import com.creditease.application.query.ImageBean;
-import com.creditease.application.query.Pager;
-import com.creditease.application.query.ResultInfo;
+import com.creditease.application.annotation.AnnoUtil;
+import com.creditease.application.request.ImageBean;
+import com.creditease.application.request.Pager;
+import com.creditease.application.request.ResultInfo;
+import com.creditease.application.response.entity.ImageRes;
 import com.creditease.application.service.ImageService;
 import com.creditease.application.util.Constant;
 import org.slf4j.Logger;
@@ -32,7 +34,7 @@ public class AppController {
         try {
             Pager pager = imageService.findImageListByPage(bean);
             info.setTotal(pager.getTotalResult());
-            info.setRows(pager.getResults());
+            info.setRows(AnnoUtil.convertBean(ImageRes.class,pager.getResults()));
         }catch (Exception e){
             logger.error("image/app",e);
             info.setCode(Constant.failCode);

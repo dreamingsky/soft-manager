@@ -1,4 +1,4 @@
-package com.creditease.application.query;
+package com.creditease.application.request;
 
 /**
  * Created by huiyangchen1 on 2017/6/24.

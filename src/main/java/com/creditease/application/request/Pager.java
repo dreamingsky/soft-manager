@@ -1,4 +1,4 @@
-package com.creditease.application.query;
+package com.creditease.application.request;
 
 import com.creditease.application.util.Constant;
 import org.apache.commons.logging.Log;
