@@ -26,9 +26,18 @@ public class LoginController {
     private UserService userService;
 
 
-    @RequestMapping("/")
+    @RequestMapping("/index")
     public String toLogin(HttpServletRequest request){
         return "index";
     }
+    @RequestMapping("/")
+    public String login(HttpServletRequest request){
+        return "login";
+    }
 
+    @RequestMapping("/info")
+    public String loginInfo(UserBean bean,HttpServletRequest request){
+
+        return "index";
+    }
 }
