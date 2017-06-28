@@ -12,7 +12,7 @@
 <!-- BEGIN LOGIN -->
 <div class="content">
     <!-- BEGIN LOGIN FORM -->
-    <form class="login-form" th:action="@{/login/info}" method="post">
+    <form class="login-form" th:action="@{/login/validate}" method="post">
         <h3 class="form-title">用户登录</h3>
         <div class="alert alert-danger display-hide">
             <button class="close" data-close="alert"></button>
@@ -44,7 +44,6 @@
     </form>
     <!-- END FORGOT PASSWORD FORM -->
 </div>
-<!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
     2017 &copy; Chen

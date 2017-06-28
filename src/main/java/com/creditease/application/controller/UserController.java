@@ -34,10 +34,6 @@ public class UserController {
 
     }
 
-    @RequestMapping("/to/list")
-    public String touser(HttpServletRequest request){
-        return "user/list";
-    }
 
     @RequestMapping(value = "/list",method = RequestMethod.POST)
     @ResponseBody

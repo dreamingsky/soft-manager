@@ -27,11 +27,6 @@ public class ImageController {
     private ImageService imageService;
 
 
-    @RequestMapping("/to/list")
-    public String tolist(HttpServletRequest request){
-        return "image/list";
-    }
-
     @RequestMapping(value = "/list",method = RequestMethod.POST)
     @ResponseBody
     public ResultInfo imageList(ImageBean bean, HttpServletRequest request){
