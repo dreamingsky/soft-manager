@@ -12,7 +12,7 @@
         <div id="aa" class="easyui-accordion" style="position: absolute; top: 27px; left: 0px; right: 0px; bottom: 0px;">
 
             <div title="用户管理" iconcls="icon-save" selected="true" style="overflow: auto; padding: 10px;">
-                <ul class="easyui-tree">
+                <ul class="easyui-tree" data-options="lines:false,animate:true">
                     <li>
                         <span><a onclick="addTab('用户列表','/user/to/list')">用户列表</a></span>
                     </li>
@@ -28,7 +28,7 @@
         </div>
 
     </div>
-    <div data-options="region:'center',iconCls:'icon-ok'">
+    <div id="mainPanle" data-options="region:'center',iconCls:'icon-ok'">
         <div id="tt" class="easyui-tabs" fit="true" border="false">
 
             <div title="欢迎使用" style="padding: 20px; overflow: hidden;" id="home">

@@ -7,8 +7,7 @@
     			title:title,
     			content:content,
     			closable:true,
-    			width: $('#mainPanle').width() - 10,
-                height: $('#mainPanle').height() - 26
+    			fit: true
     		});
     	}
     }
