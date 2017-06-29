@@ -6,6 +6,7 @@ import com.creditease.application.request.Pager;
 import com.creditease.application.request.ResultInfo;
 import com.creditease.application.request.UserBean;
 import com.creditease.application.service.UserService;
+import com.creditease.application.util.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -48,8 +49,15 @@ public class LoginController {
 
 
     @RequestMapping("/login/validate")
-    public String loginInfo(UserBean bean,HttpServletRequest request){
+    @ResponseBody
+    public ResultInfo loginInfo(UserBean bean,HttpServletRequest request){
+        ResultInfo info = new ResultInfo();
+        User userInfo = userService.findUserInfo(bean.getUserName(), Md5Util.MD5Encode(bean.getPassword()));
+        if(userInfo == null){
+            info.setCode(1);
+            info.setDesc("用户名或密码错误");
+        }
 
-        return "redirect:/index";
+        return info;
     }
 }
