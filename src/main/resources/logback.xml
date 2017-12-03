@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="false" scanPeriod="60 seconds" debug="false">
-	<property name="LOG_HOME" value="/boot/" />
+	<property name="LOG_HOME" value="/Users/young/" />
 	<property name="bizNo" value="boot"></property>
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
