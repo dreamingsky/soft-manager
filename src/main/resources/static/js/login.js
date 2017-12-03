@@ -18,7 +18,7 @@
                 async :false,
                 data : {"userName":userName,"password":password},
                 success : function(data){
-                    if(data.code==0){
+                    if(data.code==1){
                         window.location = baseUrl +"/index";
                     }else{
                         $("#alertMess").html("请输入正确的用户名或密码");

@@ -54,7 +54,7 @@ public class LoginController {
         ResultInfo info = new ResultInfo();
         User userInfo = userService.findUserInfo(bean.getUserName(), Md5Util.MD5Encode(bean.getPassword()));
         if(userInfo == null){
-            info.setCode(1);
+            info.setCode(2);
             info.setDesc("用户名或密码错误");
         }
 
