@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Configuration
 @EnableWebMvc
-public class InterceptorConfig extends WebMvcConfigurerAdapter{
+public class WebMvcConfig extends WebMvcConfigurerAdapter{
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

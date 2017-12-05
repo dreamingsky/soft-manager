@@ -19,7 +19,6 @@ import javax.servlet.MultipartConfigElement;
  * Created by huiyangchen1 on 2017/6/16.
  */
 @Configuration
-@EnableWebMvc
 public class WebConfig {
 
     @Bean
