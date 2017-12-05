@@ -26,7 +26,7 @@
 	<!-- Spring framework logger -->
 	<logger name="org.springframework" level="info" additivity="false"></logger>
 
-	<logger name="com.creditease.application" level="info" additivity="false">
+	<logger name="com.young.application" level="info" additivity="false">
 		<appender-ref ref="businessLogAppender" />
 	</logger>
 

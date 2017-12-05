@@ -20,7 +20,7 @@ import java.util.Properties;
  * Created by huiyangchen1 on 2017/6/15.
  */
 @Configuration
-@EnableJpaRepositories(basePackages = "com.creditease.application.dao",repositoryImplementationPostfix = "Impl",entityManagerFactoryRef = "entityManagerFactory",transactionManagerRef = "transactionManager")
+@EnableJpaRepositories(basePackages = "com.young.application.dao",repositoryImplementationPostfix = "Impl",entityManagerFactoryRef = "entityManagerFactory",transactionManagerRef = "transactionManager")
 @EnableTransactionManagement
 public class DbConfig {
 
@@ -101,7 +101,7 @@ public class DbConfig {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
         factoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        factoryBean.setPackagesToScan("com.creditease.application.entity");
+        factoryBean.setPackagesToScan("com.young.application.entity");
         factoryBean.setJpaProperties(hibernateProperties);
         factoryBean.setPersistenceUnitName("myPersistenceUnit");
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());

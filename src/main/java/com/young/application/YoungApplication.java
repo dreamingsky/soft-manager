@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Created by huiyangchen1 on 2017/3/30.
  */
 @SpringBootApplication
-public class CreditApplication {
+public class YoungApplication {
     public static void  main(String[] args){
 
-        SpringApplication.run(CreditApplication.class,args);
+        SpringApplication.run(YoungApplication.class,args);
     }
 }

@@ -11,7 +11,7 @@ public class StartServletApplication extends SpringBootServletInitializer{
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
 
-        SpringApplicationBuilder sources = builder.sources(CreditApplication.class);
+        SpringApplicationBuilder sources = builder.sources(YoungApplication.class);
 
         return sources;
     }
