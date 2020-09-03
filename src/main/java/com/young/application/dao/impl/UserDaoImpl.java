@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class UserDaoImpl {
 
-    @PersistenceContext(unitName="myPersistenceUnit")
+    @PersistenceContext
     private EntityManager entityManager;
 
     public User findUserByUserInfo(String username, String password){

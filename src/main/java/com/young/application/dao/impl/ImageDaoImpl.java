@@ -13,7 +13,7 @@ import javax.persistence.Query;
  */
 public class ImageDaoImpl {
 
-    @PersistenceContext(unitName="myPersistenceUnit")
+    @PersistenceContext
     private EntityManager entityManager;
 
 
