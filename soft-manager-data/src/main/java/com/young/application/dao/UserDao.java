@@ -14,4 +14,7 @@ public interface UserDao extends JpaRepository<User,Long> {
 
     @Query("from User where userName=?1 and password=?2")
     public User getUserInfo(String username,String password);
+
+    @Query("from User where userName=?1 ")
+    User findUserInfoByName(String userName);
 }

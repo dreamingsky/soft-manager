@@ -27,6 +27,12 @@ public class UserServiceImpl implements UserService {
         return userInfo;
     }
 
+    public User findUserInfo(String userName) {
+
+        User userInfo = userDao.findUserInfoByName(userName);
+        return userInfo;
+    }
+
     @Override
     public Pager findUserListByPage(UserBean bean) {
         Pager page = userDaoImpl.findUserByPage(bean);

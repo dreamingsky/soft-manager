@@ -1,5 +1,6 @@
 package com.young.application.system.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +13,9 @@ import java.io.OutputStream;
 /**
  * Created by huiyangchen1 on 2017/6/26.
  */
+@Slf4j
 public class FileUtil {
 
-    private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
 
     private static String path = "";
 
@@ -36,13 +37,13 @@ public class FileUtil {
             }
 
         }catch (Exception e){
-            logger.error("file",e);
+            log.error("file",e);
         }finally {
             try {
                 if(ot!=null)
                     ot.close();
             }catch (Exception e){
-                logger.error("file",e);
+                log.error("file",e);
             }
 
         }
@@ -62,7 +63,7 @@ public class FileUtil {
             }
 
         }catch (Exception e){
-            logger.error("file",e);
+            log.error("file",e);
         }
     }
 }

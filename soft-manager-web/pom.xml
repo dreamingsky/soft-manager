@@ -42,9 +42,10 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
         </dependency>
     </dependencies>
 

@@ -9,7 +9,9 @@ import com.young.application.system.request.UserBean;
  */
 public interface UserService {
 
-    public User findUserInfo(String userName, String pass);
+    User findUserInfo(String userName, String pass);
+
+    User findUserInfo(String userName);
 
 
     Pager findUserListByPage(UserBean bean);
