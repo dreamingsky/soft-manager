@@ -53,9 +53,9 @@ public class ShiroConfig {
         Map<String,String>  filterMap = new LinkedHashMap<>();
         filterMap.put("/logout", "logout");
         // swagger
-        filterMap.put("/swagger**/**", "anon");
-        filterMap.put("/webjars/**", "anon");
-        filterMap.put("/v2/**", "anon");
+        filterMap.put("/static/**", "anon");
+        filterMap.put("/public/**", "anon");
+        filterMap.put("/login/**", "anon");
         // 对所有用户认证
         filterMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);

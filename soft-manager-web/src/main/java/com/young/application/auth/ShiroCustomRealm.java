@@ -12,7 +12,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ShiroCustomRealm extends AuthorizingRealm {
+    public class ShiroCustomRealm extends AuthorizingRealm {
 
     @Autowired
     private UserService userService;
@@ -47,7 +47,7 @@ public class ShiroCustomRealm extends AuthorizingRealm {
                 return null;
             }
 
-            return new SimpleAuthenticationInfo(username,userInfo.getPassword(),"");
+            return new SimpleAuthenticationInfo(username,userInfo.getPassword(),getName());
         }
         return null;
     }
