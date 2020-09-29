@@ -1,14 +1,15 @@
 package com.young.application.business.user.impl;
 
 import com.young.application.business.user.UserService;
+import com.young.application.mapper.SysUserInfoMapper;
+import com.young.application.entity.SysUserInfo;
 import com.young.application.page.Pager;
-import com.young.application.dao.UserDao;
-import com.young.application.dao.impl.UserDaoImpl;
-import com.young.application.entity.User;
 import com.young.application.system.request.UserBean;
 import com.young.application.system.util.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by huiyangchen1 on 2017/6/15.
@@ -17,37 +18,39 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDao userDao;
-    @Autowired
-    private UserDaoImpl userDaoImpl;
-    @Override
-    public User findUserInfo(String userName, String pass) {
+    private SysUserInfoMapper sysUserInfoMapper;
 
-        User userInfo = userDaoImpl.findUserByUserInfo(userName, pass);
+
+    @Override
+    public SysUserInfo findUserInfo(String userName, String pass) {
+
+        SysUserInfo userInfo = sysUserInfoMapper.findUserByUserInfo(userName, pass);
         return userInfo;
     }
 
-    public User findUserInfo(String userName) {
+    public SysUserInfo findUserInfo(String userName) {
 
-        User userInfo = userDao.findUserInfoByName(userName);
+        SysUserInfo userInfo = sysUserInfoMapper.findUserByUserInfo(userName,null);
         return userInfo;
     }
 
     @Override
     public Pager findUserListByPage(UserBean bean) {
-        Pager page = userDaoImpl.findUserByPage(bean);
-        return page;
+        Pager pager = new Pager();
+        List<SysUserInfo> userInfoList = sysUserInfoMapper.findUserByPage(bean);
+        pager.initPage(userInfoList,bean.getPage(),bean.getRows(),bean.getTotal());
+        return pager;
     }
 
     @Override
-    public void saveUserInfo(User user) {
+    public void saveUserInfo(SysUserInfo user) {
         String password = user.getPassword();
         user.setPassword(Md5Util.MD5Encode(password));
-        userDao.saveAndFlush(user);
+        sysUserInfoMapper.insert(user);
     }
 
     @Override
     public void deleteUser(Long id) {
-        userDao.deleteById(id);
+        sysUserInfoMapper.deleteByPrimaryKey(id);
     }
 }

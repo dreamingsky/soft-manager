@@ -1,7 +1,7 @@
 package com.young.application.controller;
 
 import com.young.application.business.image.ImageService;
-import com.young.application.entity.Image;
+import com.young.application.entity.SysImage;
 import com.young.application.page.Pager;
 import com.young.application.system.request.ImageBean;
 import com.young.application.system.request.ResultInfo;
@@ -49,7 +49,7 @@ public class ImageController {
                 imageVO.setFileUrl(FileUtil.upload(file.getOriginalFilename(),file.getInputStream()));
             }
             //复制
-            Image image = new Image();
+            SysImage image = new SysImage();
             BeanUtils.copyProperties(imageVO,image);
             imageService.saveImage(image);
         }catch (Exception e){
@@ -64,7 +64,7 @@ public class ImageController {
     public ResultInfo userDelete(@PathVariable("id") Long id, HttpServletRequest request){
         ResultInfo info = new ResultInfo();
         try {
-            Image image = imageService.findImageById(id);
+            SysImage image = imageService.findImageById(id);
             if(image!=null){
                 imageService.deleteImage(image);
             }

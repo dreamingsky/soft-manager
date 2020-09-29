@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>soft-manager-system</artifactId>
+    <artifactId>soft-manager-common</artifactId>
 
-    <name>soft-manager-system</name>
+    <name>soft-manager-common</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 

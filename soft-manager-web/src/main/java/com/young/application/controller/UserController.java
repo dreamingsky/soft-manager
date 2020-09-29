@@ -2,10 +2,11 @@ package com.young.application.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.young.application.business.user.UserService;
+import com.young.application.entity.SysUserInfo;
 import com.young.application.page.Pager;
-import com.young.application.entity.User;
 import com.young.application.system.request.ResultInfo;
 import com.young.application.system.request.UserBean;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,7 @@ public class UserController {
     @ResponseBody
     public JSONObject userInfo(){
 
-        User userInfo = userService.findUserInfo("chen", "chen");
-
+        SysUserInfo userInfo = userService.findUserInfo("chen", "chen");
         Object o = JSONObject.toJSON(userInfo);
 
         return (JSONObject) o;
@@ -35,6 +35,7 @@ public class UserController {
     }
 
 
+    @RequiresRoles({"admin"})
     @RequestMapping(value = "/list",method = RequestMethod.POST)
     @ResponseBody
     public ResultInfo userList(UserBean bean, HttpServletRequest request){
@@ -47,7 +48,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public String userSave(User user,HttpServletRequest request){
+    public String userSave(SysUserInfo user,HttpServletRequest request){
         userService.saveUserInfo(user);
         return "redirect:/user/to/list";
     }

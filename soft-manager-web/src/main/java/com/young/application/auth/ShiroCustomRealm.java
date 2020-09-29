@@ -1,7 +1,7 @@
 package com.young.application.auth;
 
 import com.young.application.business.user.UserService;
-import com.young.application.entity.User;
+import com.young.application.entity.SysUserInfo;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
         Object principal = principalCollection.getPrimaryPrincipal();
         if (principal != null){
             String username = principal.toString();
-            User userInfo = userService.findUserInfo(username);
+            SysUserInfo userInfo = userService.findUserInfo(username);
             if (userInfo == null){
 
                 return null;
@@ -41,7 +41,7 @@ import org.springframework.beans.factory.annotation.Autowired;
         Object principal = authenticationToken.getPrincipal();
         if (principal != null){
             String username = principal.toString();
-            User userInfo = userService.findUserInfo(username);
+            SysUserInfo userInfo = userService.findUserInfo(username);
             if (userInfo == null){
 
                 return null;

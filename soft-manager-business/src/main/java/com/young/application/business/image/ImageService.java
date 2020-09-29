@@ -1,6 +1,6 @@
 package com.young.application.business.image;
 
-import com.young.application.entity.Image;
+import com.young.application.entity.SysImage;
 import com.young.application.page.Pager;
 import com.young.application.system.request.ImageBean;
 
@@ -11,8 +11,8 @@ public interface ImageService {
 
     Pager findImageListByPage(ImageBean bean);
 
-    void saveImage(Image image);
-    Image findImageById(Long id);
+    void saveImage(SysImage image);
+    SysImage findImageById(Long id);
 
-    void deleteImage(Image image);
+    void deleteImage(SysImage image);
 }

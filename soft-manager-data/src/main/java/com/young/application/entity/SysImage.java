@@ -1,27 +1,21 @@
 package com.young.application.entity;
 
+import java.util.Date;
 
-import javax.persistence.*;
-
-/**
- * Created by huiyangchen1 on 2017/6/15.
- */
-@Entity
-@Table(name = "sys_image")
-public class Image {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class SysImage {
     private Long id;
-    @Column(name = "image_name")
+
     private String imageName;
-    @Column(name = "file_name")
+
     private String fileName;
-    @Column(name = "file_url")
+
     private String fileUrl;
-    @Column(name = "remark")
+
     private String remark;
 
+    private Date updateTime;
+
+    private Date createTime;
 
     public Long getId() {
         return id;
@@ -36,7 +30,7 @@ public class Image {
     }
 
     public void setImageName(String imageName) {
-        this.imageName = imageName;
+        this.imageName = imageName == null ? null : imageName.trim();
     }
 
     public String getFileName() {
@@ -44,7 +38,7 @@ public class Image {
     }
 
     public void setFileName(String fileName) {
-        this.fileName = fileName;
+        this.fileName = fileName == null ? null : fileName.trim();
     }
 
     public String getFileUrl() {
@@ -52,7 +46,7 @@ public class Image {
     }
 
     public void setFileUrl(String fileUrl) {
-        this.fileUrl = fileUrl;
+        this.fileUrl = fileUrl == null ? null : fileUrl.trim();
     }
 
     public String getRemark() {
@@ -60,7 +54,22 @@ public class Image {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark;
+        this.remark = remark == null ? null : remark.trim();
     }
 
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 }

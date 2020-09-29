@@ -1,7 +1,6 @@
 package com.young.application.controller;
 
 import com.young.application.business.user.UserService;
-import com.young.application.entity.User;
 import com.young.application.system.request.ResultInfo;
 import com.young.application.system.request.UserBean;
 import com.young.application.system.util.Md5Util;
