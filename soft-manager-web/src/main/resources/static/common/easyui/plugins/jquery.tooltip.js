@@ -1,7 +1,7 @@
 /**
- * jQuery EasyUI 1.5.2
+ * EasyUI for jQuery 1.9.7
  * 
- * Copyright (c) 2009-2017 www.jeasyui.com. All rights reserved.
+ * Copyright (c) 2009-2020 www.jeasyui.com. All rights reserved.
  *
  * Licensed under the freeware license: http://www.jeasyui.com/license_freeware.php
  * To use it on other terms please contact us: info@jeasyui.com
@@ -13,11 +13,11 @@ $(_2).addClass("tooltip-f");
 };
 function _3(_4){
 var _5=$.data(_4,"tooltip").options;
-$(_4).unbind(".tooltip").bind(_5.showEvent+".tooltip",function(e){
+$(_4)._unbind(".tooltip")._bind(_5.showEvent+".tooltip",function(e){
 $(_4).tooltip("show",e);
-}).bind(_5.hideEvent+".tooltip",function(e){
+})._bind(_5.hideEvent+".tooltip",function(e){
 $(_4).tooltip("hide",e);
-}).bind("mousemove.tooltip",function(e){
+})._bind("mousemove.tooltip",function(e){
 if(_5.trackMouse){
 _5.trackMouseX=e.pageX;
 _5.trackMouseY=e.pageY;
@@ -92,11 +92,15 @@ top=t.offset().top+_14;
 switch(_c.position){
 case "right":
 _12+=t._outerWidth()+12+(_c.trackMouse?12:0);
+if(_c.valign=="middle"){
 top-=(_d._outerHeight()-t._outerHeight())/2;
+}
 break;
 case "left":
 _12-=_d._outerWidth()+12+(_c.trackMouse?12:0);
+if(_c.valign=="middle"){
 top-=(_d._outerHeight()-t._outerHeight())/2;
+}
 break;
 case "top":
 _12-=(_d._outerWidth()-t._outerWidth())/2;
@@ -167,7 +171,7 @@ if(_26._title){
 $(_24).attr("title",_26._title);
 }
 $.removeData(_24,"tooltip");
-$(_24).unbind(".tooltip").removeClass("tooltip-f");
+$(_24)._unbind(".tooltip").removeClass("tooltip-f");
 _26.onDestroy.call(_24);
 }
 };
@@ -224,7 +228,7 @@ _2c.content=_2c._title;
 }
 return _2c;
 };
-$.fn.tooltip.defaults={position:"bottom",content:null,trackMouse:false,deltaX:0,deltaY:0,showEvent:"mouseenter",hideEvent:"mouseleave",showDelay:200,hideDelay:100,onShow:function(e){
+$.fn.tooltip.defaults={position:"bottom",valign:"middle",content:null,trackMouse:false,deltaX:0,deltaY:0,showEvent:"mouseenter",hideEvent:"mouseleave",showDelay:200,hideDelay:100,onShow:function(e){
 },onHide:function(e){
 },onUpdate:function(_2d){
 },onPosition:function(_2e,top){

@@ -1,7 +1,7 @@
 /**
- * jQuery EasyUI 1.5.2
+ * EasyUI for jQuery 1.9.7
  * 
- * Copyright (c) 2009-2017 www.jeasyui.com. All rights reserved.
+ * Copyright (c) 2009-2020 www.jeasyui.com. All rights reserved.
  *
  * Licensed under the freeware license: http://www.jeasyui.com/license_freeware.php
  * To use it on other terms please contact us: info@jeasyui.com
@@ -203,18 +203,18 @@ var _2b=_2a.options;
 var tb=_2a.textbox;
 var _2c=tb.find(".textbox-text");
 _2c.attr("placeholder",_2b.prompt);
-_2c.unbind(".textbox");
-$(_2a.label).unbind(".textbox");
+_2c._unbind(".textbox");
+$(_2a.label)._unbind(".textbox");
 if(!_2b.disabled&&!_2b.readonly){
 if(_2a.label){
-$(_2a.label).bind("click.textbox",function(e){
+$(_2a.label)._bind("click.textbox",function(e){
 if(!_2b.hasFocusMe){
 _2c.focus();
 $(_29).textbox("setSelectionRange",{start:0,end:_2c.val().length});
 }
 });
 }
-_2c.bind("blur.textbox",function(e){
+_2c._bind("blur.textbox",function(e){
 if(!tb.hasClass("textbox-focused")){
 return;
 }
@@ -225,7 +225,8 @@ $(this).val(_2b.prompt).addClass("textbox-prompt");
 $(this).removeClass("textbox-prompt");
 }
 tb.removeClass("textbox-focused");
-}).bind("focus.textbox",function(e){
+tb.closest(".form-field").removeClass("form-field-focused");
+})._bind("focus.textbox",function(e){
 _2b.hasFocusMe=true;
 if(tb.hasClass("textbox-focused")){
 return;
@@ -235,13 +236,14 @@ $(this).val(_2b.value);
 }
 $(this).removeClass("textbox-prompt");
 tb.addClass("textbox-focused");
+tb.closest(".form-field").addClass("form-field-focused");
 });
 for(var _2d in _2b.inputEvents){
-_2c.bind(_2d+".textbox",{target:_29},_2b.inputEvents[_2d]);
+_2c._bind(_2d+".textbox",{target:_29},_2b.inputEvents[_2d]);
 }
 }
 var _2e=tb.find(".textbox-addon");
-_2e.unbind().bind("click",{target:_29},function(e){
+_2e._unbind()._bind("click",{target:_29},function(e){
 var _2f=$(e.target).closest("a.textbox-icon:not(.textbox-icon-disabled)");
 if(_2f.length){
 var _30=parseInt(_2f.attr("icon-index"));
@@ -263,7 +265,7 @@ _34.removeClass("textbox-icon-disabled");
 });
 var btn=tb.find(".textbox-button");
 btn.linkbutton((_2b.disabled||_2b.readonly)?"disable":"enable");
-tb.unbind(".textbox").bind("_resize.textbox",function(e,_35){
+tb._unbind(".textbox")._bind("_resize.textbox",function(e,_35){
 if($(this).hasClass("easyui-fluid")||_35){
 _12(_29);
 }
@@ -281,12 +283,12 @@ if(_39.disabled){
 _3a.blur();
 _3a.validatebox("disable");
 tb.addClass("textbox-disabled");
-ss.attr("disabled","disabled");
+ss._propAttr("disabled",true);
 $(_38.label).addClass("textbox-label-disabled");
 }else{
 _3a.validatebox("enable");
 tb.removeClass("textbox-disabled");
-ss.removeAttr("disabled");
+ss._propAttr("disabled",false);
 $(_38.label).removeClass("textbox-label-disabled");
 }
 };
@@ -300,7 +302,13 @@ if(_3e.readonly){
 _3f.triggerHandler("blur.textbox");
 }
 _3f.validatebox("readonly",_3e.readonly);
-tb.removeClass("textbox-readonly").addClass(_3e.readonly?"textbox-readonly":"");
+if(_3e.readonly){
+tb.addClass("textbox-readonly");
+$(_3d.label).addClass("textbox-label-readonly");
+}else{
+tb.removeClass("textbox-readonly");
+$(_3d.label).removeClass("textbox-label-readonly");
+}
 };
 $.fn.textbox=function(_40,_41){
 if(typeof _40=="string"){
@@ -423,6 +431,11 @@ _51.removeClass("textbox-prompt");
 _51.val(_50.prompt).addClass("textbox-prompt");
 }
 }
+if(_50.value){
+$(this).closest(".form-field").removeClass("form-field-empty");
+}else{
+$(this).closest(".form-field").addClass("form-field-empty");
+}
 $(this).textbox("validate");
 });
 },initValue:function(jq,_52){
@@ -538,7 +551,7 @@ $.fn.textbox.parseOptions=function(_69){
 var t=$(_69);
 return $.extend({},$.fn.validatebox.parseOptions(_69),$.parser.parseOptions(_69,["prompt","iconCls","iconAlign","buttonText","buttonIcon","buttonAlign","label","labelPosition","labelAlign",{multiline:"boolean",iconWidth:"number",labelWidth:"number"}]),{value:(t.val()||undefined),type:(t.attr("type")?t.attr("type"):undefined)});
 };
-$.fn.textbox.defaults=$.extend({},$.fn.validatebox.defaults,{doSize:true,width:"auto",height:"auto",cls:null,prompt:"",value:"",type:"text",multiline:false,icons:[],iconCls:null,iconAlign:"right",iconWidth:18,buttonText:"",buttonIcon:null,buttonAlign:"right",label:null,labelWidth:"auto",labelPosition:"before",labelAlign:"left",inputEvents:{blur:function(e){
+$.fn.textbox.defaults=$.extend({},$.fn.validatebox.defaults,{doSize:true,width:"auto",height:"auto",cls:null,prompt:"",value:"",type:"text",multiline:false,icons:[],iconCls:null,iconAlign:"right",iconWidth:26,buttonText:"",buttonIcon:null,buttonAlign:"right",label:null,labelWidth:"auto",labelPosition:"before",labelAlign:"left",inputEvents:{blur:function(e){
 var t=$(e.data.target);
 var _6a=t.textbox("options");
 if(t.textbox("getValue")!=_6a.value){
