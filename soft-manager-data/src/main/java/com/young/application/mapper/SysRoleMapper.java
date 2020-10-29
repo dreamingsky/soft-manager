@@ -1,10 +1,12 @@
 package com.young.application.mapper;
 
 import com.young.application.entity.SysRole;
+import com.young.application.system.request.RoleBean;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 
-@Mapper
+
 public interface SysRoleMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -17,4 +19,8 @@ public interface SysRoleMapper {
     int updateByPrimaryKeySelective(SysRole record);
 
     int updateByPrimaryKey(SysRole record);
+
+
+    List<SysRole> findRoleByPage(RoleBean bean);
+
 }

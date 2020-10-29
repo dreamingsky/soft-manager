@@ -1,8 +1,8 @@
-var users = {
+var roles = {
     config: {
-        userList: baseUrl + '/user/list',
-        deleteUrl: baseUrl + '/user/delete/',
-        userDelete: '<a href="javascript:void(0)" onclick="deleteFun(\'{0}\',\'{1}\',\'module\')">删除</a>'
+        roleList: baseUrl + '/role/list',
+        deleteUrl: baseUrl + '/role/delete/',
+        roleDelete: '<a href="javascript:void(0)" onclick="deleteFun(\'{0}\',\'{1}\',\'module\')">删除</a>'
     },
     opts: {
         'sortName': 'id',
@@ -11,29 +11,29 @@ var users = {
     },
     cols: [[
         {
-            field: 'userName', title: '用户名', align: 'center', formatter: function (value, row, index) {
+            field: 'roleCode', title: '角色code', align: 'center', formatter: function (value, row, index) {
                 return value;
             }, width: 150
         },
         {
-            field: 'phone', title: '手机号', align: 'center', formatter: function (value, row, index) {
+            field: 'roleName', title: '角色名称', align: 'center', formatter: function (value, row, index) {
                 return value;
             }, width: 200
         },
         {
             field: 'action', title: '操作', align: 'center', formatter: function (value, row, index) {
                 var btns = [];
-                btns.push($.formatString(users.config.userDelete, users.config.deleteUrl, row.id));
+                btns.push($.formatString(roles.config.roleDelete, roles.config.deleteUrl, row.id));
                 return btns.join(' | ');
             }
         }
     ]],
     init: function () {
-        baseTable('module', users.config.userList, 'toolbar', users.cols, users.opts);
+        baseTable('module', roles.config.roleList, 'toolbar', roles.cols, roles.opts);
     }
 }
 
-function newUser() {
+function newRole() {
     $("#dlg").dialog({
         open: true,
         center: true,
@@ -47,7 +47,7 @@ function newUser() {
                 text: '保存',
                 iconCls: 'icon-save',
                 handler: function () {
-                    $('#fm').attr('action', baseUrl + "/user/add");
+                    $('#fm').attr('action', baseUrl + "/role/add");
                     $('#fm').submit();
                 }
             },
@@ -62,10 +62,10 @@ function newUser() {
     });
 }
 
-function saveUser() {
+function saveRole() {
 
 }
 
 $(document).ready(function () {
-    users.init();
+    roles.init();
 });

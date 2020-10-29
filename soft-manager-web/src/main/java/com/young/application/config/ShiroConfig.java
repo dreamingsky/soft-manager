@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
+import javax.servlet.Filter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -79,7 +80,18 @@ public class ShiroConfig {
         filterMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
 
+        Map<String, Filter>  logMap = new LinkedHashMap<>();
+        logMap.put("logout",shiroLogoutFilter());
+        shiroFilterFactoryBean.setFilters(logMap);
+
         return shiroFilterFactoryBean;
+    }
+
+
+    public ShiroLogoutFilter shiroLogoutFilter(){
+        ShiroLogoutFilter shiroLogoutFilter = new ShiroLogoutFilter();
+        shiroLogoutFilter.setRedirectUrl("/login");
+        return shiroLogoutFilter;
     }
 
 }

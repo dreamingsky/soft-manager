@@ -69,4 +69,24 @@ public class LoginController {
 
         return info;
     }
+
+
+    @RequestMapping("/login/out")
+    @ResponseBody
+    public ResultInfo loginOut(UserBean bean, HttpServletRequest request){
+        ResultInfo info = new ResultInfo();
+
+        Subject subject = SecurityUtils.getSubject();
+
+        try{
+            subject.logout();
+
+        }catch (AuthenticationException e){
+            log.error("用户退出异常{}",e);
+            info.setCode(2);
+            info.setDesc("用户退出异常");
+        }
+
+        return info;
+    }
 }
