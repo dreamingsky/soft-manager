@@ -14,7 +14,7 @@
     <name>soft-manager</name>
   <url>http://maven.apache.org</url>
     <properties>
-        <spring.revision>2.0.3.RELEASE</spring.revision>
+        <spring.revision>2.5.12</spring.revision>
         <web.revision>1.0-SNAPSHOT</web.revision>
     </properties>
     <parent>
