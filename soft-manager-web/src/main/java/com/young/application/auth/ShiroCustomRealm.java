@@ -2,10 +2,8 @@ package com.young.application.auth;
 
 import com.young.application.business.user.UserService;
 import com.young.application.entity.SysUserInfo;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -38,10 +36,11 @@ import org.springframework.beans.factory.annotation.Autowired;
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
 
-        Object principal = authenticationToken.getPrincipal();
-        if (principal != null){
-            String username = principal.toString();
-            SysUserInfo userInfo = userService.findUserInfo(username);
+        UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+        String username = token.getUsername();
+        if (StringUtils.isNoneEmpty(username)){
+
+            SysUserInfo userInfo = userService.findUserInfo(username,String.valueOf(token.getPassword()));
             if (userInfo == null){
 
                 return null;
