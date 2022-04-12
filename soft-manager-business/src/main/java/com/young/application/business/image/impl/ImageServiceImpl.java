@@ -1,5 +1,7 @@
 package com.young.application.business.image.impl;
 
+import com.young.application.base.BaseDao;
+import com.young.application.business.base.impl.BaseServiceImpl;
 import com.young.application.business.image.ImageService;
 import com.young.application.mapper.SysImageMapper;
 import com.young.application.entity.SysImage;
@@ -16,7 +18,7 @@ import java.util.List;
  * Created by huiyangchen1 on 2017/6/15.
  */
 @Service
-public class ImageServiceImpl implements ImageService {
+public class ImageServiceImpl extends BaseServiceImpl<SysImage> implements ImageService {
 
     @Autowired
     private SysImageMapper sysImageMapper;
@@ -45,5 +47,10 @@ public class ImageServiceImpl implements ImageService {
     public void deleteImage(SysImage image) {
         sysImageMapper.deleteByPrimaryKey(image.getId());
         FileUtil.delete(image.getFileName());
+    }
+
+    @Override
+    protected BaseDao<SysImage> getDao() {
+        return this.sysImageMapper;
     }
 }

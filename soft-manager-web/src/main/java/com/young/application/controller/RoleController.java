@@ -46,7 +46,7 @@ public class RoleController {
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String userSave(SysRole role, HttpServletRequest request){
-        roleService.saveRole(role);
+        roleService.save(role);
         return "redirect:/role/to/list";
     }
 
@@ -54,7 +54,7 @@ public class RoleController {
     @ResponseBody
     public ResultInfo userDelete(@PathVariable("id") Long id, HttpServletRequest request){
         ResultInfo info = new ResultInfo();
-        roleService.deleteRole(id);
+        roleService.deleteById(id);
         return info;
     }
 

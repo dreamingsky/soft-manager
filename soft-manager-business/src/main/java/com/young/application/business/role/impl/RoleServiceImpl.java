@@ -1,5 +1,7 @@
 package com.young.application.business.role.impl;
 
+import com.young.application.base.BaseDao;
+import com.young.application.business.base.impl.BaseServiceImpl;
 import com.young.application.business.role.RoleService;
 import com.young.application.entity.SysRole;
 import com.young.application.mapper.SysRoleMapper;
@@ -11,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl extends BaseServiceImpl<SysRole> implements RoleService<SysRole> {
 
     @Autowired
     private SysRoleMapper sysRoleMapper;
@@ -26,13 +28,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void saveRole(SysRole role) {
-        sysRoleMapper.insertSelective(role);
-    }
-
-    @Override
-    public void deleteRole(Long id) {
-
-        sysRoleMapper.deleteByPrimaryKey(id);
+    protected BaseDao<SysRole> getDao() {
+        return sysRoleMapper;
     }
 }

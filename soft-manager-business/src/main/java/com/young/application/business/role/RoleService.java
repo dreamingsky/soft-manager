@@ -1,16 +1,12 @@
 package com.young.application.business.role;
 
+import com.young.application.business.base.BaseService;
 import com.young.application.entity.SysRole;
 import com.young.application.page.Pager;
 import com.young.application.system.request.RoleBean;
 
-public interface RoleService {
-
-
+public interface RoleService<T> extends BaseService<T> {
 
     Pager findRoleListByPage(RoleBean bean);
 
-    void saveRole(SysRole role);
-
-    void deleteRole(Long id);
 }

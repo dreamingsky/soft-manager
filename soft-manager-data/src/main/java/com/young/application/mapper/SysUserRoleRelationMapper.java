@@ -1,18 +1,9 @@
 package com.young.application.mapper;
 
+import com.young.application.base.BaseDao;
 import com.young.application.entity.SysUserRoleRelation;
 import org.apache.ibatis.annotations.Mapper;
 
-public interface SysUserRoleRelationMapper {
-    int deleteByPrimaryKey(Long id);
+public interface SysUserRoleRelationMapper extends BaseDao<SysUserRoleRelation> {
 
-    int insert(SysUserRoleRelation record);
-
-    int insertSelective(SysUserRoleRelation record);
-
-    SysUserRoleRelation selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(SysUserRoleRelation record);
-
-    int updateByPrimaryKey(SysUserRoleRelation record);
 }
