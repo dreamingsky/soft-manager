@@ -10,6 +10,4 @@ import java.util.List;
 
 public interface SysRoleMapper extends BaseDao<SysRole> {
 
-    List<SysRole> findRoleByPage(RoleBean bean);
-
 }

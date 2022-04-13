@@ -32,7 +32,7 @@ public class AppController {
 
         ResultInfo info = new ResultInfo();
         try {
-            Pager pager = imageService.findImageListByPage(bean);
+            Pager pager = imageService.findListByPage(bean);
             info.setTotal(pager.getTotalResult());
             info.setRows(AnnoUtil.convertBean(ImageRes.class,pager.getResults()));
         }catch (Exception e){

@@ -11,5 +11,4 @@ import java.util.List;
 
 public interface SysImageMapper extends BaseDao<SysImage> {
 
-    List<SysImage> findImageByPage(ImageBean bean);
 }

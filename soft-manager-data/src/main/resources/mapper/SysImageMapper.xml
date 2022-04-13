@@ -24,7 +24,7 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
 
-  <select id="findImageByPage" resultMap="BaseResultMap">
+  <select id="findListByPage" resultMap="BaseResultMap">
     select
      <include refid="Base_Column_List"/>
      from sys_image

@@ -5,8 +5,7 @@ import com.young.application.entity.SysRole;
 import com.young.application.page.Pager;
 import com.young.application.system.request.RoleBean;
 
-public interface RoleService<T> extends BaseService<T> {
+public interface RoleService extends BaseService<SysRole> {
 
-    Pager findRoleListByPage(RoleBean bean);
 
 }

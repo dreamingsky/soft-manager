@@ -37,7 +37,7 @@ public class RoleController {
     @ResponseBody
     public ResultInfo userList(RoleBean bean, HttpServletRequest request){
         ResultInfo info = new ResultInfo();
-        Pager user = roleService.findRoleListByPage(bean);
+        Pager user = roleService.findListByPage(bean);
 
         info.setRows(user.getResults());
         info.setTotal(user.getTotalResult());

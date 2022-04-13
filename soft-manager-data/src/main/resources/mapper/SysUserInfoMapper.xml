@@ -39,7 +39,7 @@
     </trim>
   </select>
 
-  <select id="findUserByPage"  resultMap="BaseResultMap">
+  <select id="findListByPage"  resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from sys_user_info

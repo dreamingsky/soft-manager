@@ -23,18 +23,6 @@ public class ImageServiceImpl extends BaseServiceImpl<SysImage> implements Image
     @Autowired
     private SysImageMapper sysImageMapper;
 
-    @Override
-    public Pager findImageListByPage(ImageBean bean) {
-        Pager pager = new Pager();
-        List<SysImage> userInfoList = sysImageMapper.findImageByPage(bean);
-        pager.initPage(userInfoList,bean.getPage(),bean.getRows(),bean.getTotal());
-        return pager;
-    }
-
-    @Override
-    public void saveImage(SysImage image) {
-        sysImageMapper.insert(image);
-    }
 
     @Override
     public SysImage findImageById(Long id) {

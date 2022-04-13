@@ -33,7 +33,7 @@ public class ImageController {
     @ResponseBody
     public ResultInfo imageList(ImageBean bean, HttpServletRequest request){
         ResultInfo info = new ResultInfo();
-        Pager user = imageService.findImageListByPage(bean);
+        Pager user = imageService.findListByPage(bean);
 
         info.setRows(user.getResults());
         info.setTotal(user.getTotalResult());
@@ -51,7 +51,7 @@ public class ImageController {
             //复制
             SysImage image = new SysImage();
             BeanUtils.copyProperties(imageVO,image);
-            imageService.saveImage(image);
+            imageService.save(image);
         }catch (Exception e){
             logger.error("image",e);
         }

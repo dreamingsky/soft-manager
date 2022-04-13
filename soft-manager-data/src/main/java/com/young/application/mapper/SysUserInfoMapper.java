@@ -13,6 +13,4 @@ public interface SysUserInfoMapper extends BaseDao<SysUserInfo> {
 
     SysUserInfo findUserByUserInfo(@Param("userName") String userName,@Param("password") String pass);
 
-
-    List<SysUserInfo> findUserByPage(UserBean bean);
 }

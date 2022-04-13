@@ -13,19 +13,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RoleServiceImpl extends BaseServiceImpl<SysRole> implements RoleService<SysRole> {
+public class RoleServiceImpl extends BaseServiceImpl<SysRole> implements RoleService {
 
     @Autowired
     private SysRoleMapper sysRoleMapper;
-    @Override
-    public Pager findRoleListByPage(RoleBean bean) {
-
-        Pager pager = new Pager();
-        List<SysRole> roleList = sysRoleMapper.findRoleByPage(bean);
-
-        pager.initPage(roleList,bean.getPage(),bean.getRows(),bean.getTotal());
-        return pager;
-    }
 
     @Override
     protected BaseDao<SysRole> getDao() {

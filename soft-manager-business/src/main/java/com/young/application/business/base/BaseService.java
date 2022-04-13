@@ -1,9 +1,14 @@
 package com.young.application.business.base;
 
+import com.young.application.page.Pager;
+import com.young.application.system.request.QueryPageBean;
+
 public interface BaseService<T> {
 
-    public void save(T t);
+    void save(T t);
 
-    public void deleteById(Long id);
+    void deleteById(Long id);
+
+    Pager findListByPage(QueryPageBean bean);
 
 }

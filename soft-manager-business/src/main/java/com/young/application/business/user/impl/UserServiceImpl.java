@@ -1,5 +1,7 @@
 package com.young.application.business.user.impl;
 
+import com.young.application.base.BaseDao;
+import com.young.application.business.base.impl.BaseServiceImpl;
 import com.young.application.business.user.UserService;
 import com.young.application.mapper.SysUserInfoMapper;
 import com.young.application.entity.SysUserInfo;
@@ -15,7 +17,7 @@ import java.util.List;
  * Created by huiyangchen1 on 2017/6/15.
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<SysUserInfo> implements UserService {
 
     @Autowired
     private SysUserInfoMapper sysUserInfoMapper;
@@ -34,13 +36,6 @@ public class UserServiceImpl implements UserService {
         return userInfo;
     }
 
-    @Override
-    public Pager findUserListByPage(UserBean bean) {
-        Pager pager = new Pager();
-        List<SysUserInfo> userInfoList = sysUserInfoMapper.findUserByPage(bean);
-        pager.initPage(userInfoList,bean.getPage(),bean.getRows(),bean.getTotal());
-        return pager;
-    }
 
     @Override
     public void saveUserInfo(SysUserInfo user) {
@@ -49,8 +44,9 @@ public class UserServiceImpl implements UserService {
         sysUserInfoMapper.insert(user);
     }
 
+
     @Override
-    public void deleteUser(Long id) {
-        sysUserInfoMapper.deleteByPrimaryKey(id);
+    protected BaseDao<SysUserInfo> getDao() {
+        return this.sysUserInfoMapper;
     }
 }

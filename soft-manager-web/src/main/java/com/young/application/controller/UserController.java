@@ -40,7 +40,7 @@ public class UserController {
     @ResponseBody
     public ResultInfo userList(UserBean bean, HttpServletRequest request){
         ResultInfo info = new ResultInfo();
-        Pager user = userService.findUserListByPage(bean);
+        Pager user = userService.findListByPage(bean);
 
         info.setRows(user.getResults());
         info.setTotal(user.getTotalResult());
@@ -57,7 +57,7 @@ public class UserController {
     @ResponseBody
     public ResultInfo userDelete(@PathVariable("id") Long id, HttpServletRequest request){
         ResultInfo info = new ResultInfo();
-        userService.deleteUser(id);
+        userService.deleteById(id);
         return info;
     }
 
